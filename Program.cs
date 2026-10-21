@@ -15,7 +15,7 @@ namespace start
     {
         static void Main()
         {
-            //startup for openrec
+            //startup for neorec
             
             Setup.setup();
             goto Tutorial;
@@ -24,18 +24,18 @@ namespace start
             if (Setup.firsttime == true)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Title = "OpenRec Intro";
-                Console.WriteLine("Welcome to OpenRec " + appversion + "!");
-                Console.WriteLine("Is this your first time using OpenRec?");
+                Console.Title = "NeoRec Intro";
+                Console.WriteLine("Welcome to NeoRec " + appversion + "!");
+                Console.WriteLine("Is this your first time using NeoRec?");
                 Console.WriteLine("Yes or No (Y, N)");
                 string readline22 = Console.ReadLine();
                 if (readline22 == "y" || readline22 == "Y")
                 {
                     Console.Clear();
-                    Console.Title = "OpenRec Tutorial";
-                    Console.WriteLine("In that case, welcome to OpenRec!");
-                    Console.WriteLine("OpenRec is server software that emulates the old servers of previous RecRoom versions.");
-                    Console.WriteLine("To use OpenRec, you'll need to have builds aswell!");
+                    Console.Title = "NeoRec Tutorial";
+                    Console.WriteLine("In that case, welcome to NeoRec!");
+                    Console.WriteLine("NeoRec is server software that emulates the old servers of previous RecRoom versions.");
+                    Console.WriteLine("To use NeoRec, you'll need to have builds aswell!");
                     Console.WriteLine("To download builds, either go to the builds channel or use the links below: (these links are also available from the #builds channel)" + Environment.NewLine);
                     Console.WriteLine(new WebClient().DownloadString("https://raw.githubusercontent.com/recroom2016/OpenRec/master/Update/builds.txt"));
                     Console.WriteLine("Download a build and press any key to continue:");
@@ -63,25 +63,23 @@ namespace start
             }
 
         Start:
-            Console.Title = "OpenRec Startup Menu";
+            Console.Title = "NeoRec Startup Menu";
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("OpenRec - Open source Old RecRoom server software. (Version: " + appversion + ")");
+            Console.WriteLine("NeoRec - Open source Old RecRoom server software. (Version: " + appversion + ")");
             Console.WriteLine("Made and provided by RecRoom 2016.");
-            Console.WriteLine("Download source code here: https://github.com/recroom2016/OpenRec");
-            Console.WriteLine("Discord: https://discord.gg/daC8QUhnFP" + Environment.NewLine);
-            if (!(new WebClient().DownloadString("https://raw.githubusercontent.com/recroom2016/OpenRec/master/Download/version.txt").Contains(appversion)))
+            Console.WriteLine("Download source code here: https://github.com/Bkerboy/NeoRec" + Environment.NewLine);
+            if (!(new WebClient().DownloadString("https://raw.githubusercontent.com/Bkerboy/NeoRec/master/Download/version.txt").Contains(appversion)))
             {
-                Console.WriteLine("This version of OpenRec is outdated. We recommend you install the latest version, OpenRec " + new WebClient().DownloadString("https://raw.githubusercontent.com/recroom2016/OpenRec/master/Download/version.txt"));
+                Console.WriteLine("This version of NeoRec is outdated. We recommend you install the latest version, NeoRec " + new WebClient().DownloadString("https://raw.githubusercontent.com/recroom2016/OpenRec/master/Download/version.txt"));
             }
             
-            Console.WriteLine("//Custom Room Downloader has been moved to the settings tab!" + Environment.NewLine);
             Console.WriteLine("(1) What's New" + Environment.NewLine +"(2) Change Settings" + Environment.NewLine + "(3) Modify Profile" + Environment.NewLine + "(4) Build Download Links" + Environment.NewLine + "(5) Start Server");
             string readline = Console.ReadLine();
             if (readline == "1")
             {
-                Console.Title = "OpenRec Changelog";
+                Console.Title = "NeoRec Changelog";
                 Console.Clear();
-                Console.WriteLine(new WebClient().DownloadString("https://raw.githubusercontent.com/recroom2016/OpenRec/master/Download/changelog.txt"));
+                Console.WriteLine(new WebClient().DownloadString("https://raw.githubusercontent.com/Bkerboy/NeoRec/master/Download/changelog.txt"));
                 Console.WriteLine("Press any key to continue:");
                 Console.ReadKey();
                 Console.Clear();
@@ -93,8 +91,8 @@ namespace start
                 goto Settings;
 
                 Settings:
-                Console.Title = "OpenRec Settings Menu";
-                Console.WriteLine("(1) Private Rooms: " + File.ReadAllText("SaveData\\App\\privaterooms.txt") + Environment.NewLine + "(2) Custom Room Downloader " + Environment.NewLine + "(3) Reset SaveData" + Environment.NewLine + "(4) Go Back");
+                Console.Title = "NeoRec Settings Menu";
+                Console.WriteLine("(1) Private Rooms: " + File.ReadAllText("SaveData\\App\\privaterooms.txt") + Environment.NewLine + "(2) Reset SaveData" + Environment.NewLine + "(3) Go Back");
                 string readline4 = Console.ReadLine();
                 if (readline4 == "1")
                 {
@@ -111,29 +109,6 @@ namespace start
                     goto Settings;
                 }
                 else if (readline4 == "2")
-                {
-                    Console.Title = "OpenRec Custom Room Downloader";
-                    Console.Clear();
-                    Console.WriteLine("Custom Room Downloader: This tool takes the room data of any room you type in and imports it into ^CustomRoom in September 27th 2018.");
-                    Console.WriteLine("Please type in the name of the room you would like to download: (Case sensitive)");
-                    string roomname = Console.ReadLine();
-                    string text = "";
-                    try
-                    {
-                        text = new WebClient().DownloadString("https://rooms.rec.net/rooms?name=" + roomname + "&include=297");
-                    }
-                    catch
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Failed to download room...");
-                        goto Settings;
-                    }
-                    CustomRooms.RoomDecode(text);
-                    Console.Clear();
-                    Console.WriteLine("Success!");
-                    goto Settings;
-                }
-                else if (readline4 == "3")
                 {
                     File.Delete("SaveData\\avatar.txt");
                     File.Delete("SaveData\\avataritems.txt");
@@ -165,7 +140,7 @@ namespace start
                     Setup.setup();
                     goto Settings;
                 }
-                else if (readline4 == "4")
+                else if (readline4 == "3")
                 {
                     Console.Clear();
                     goto Start;
@@ -177,8 +152,8 @@ namespace start
                 goto Profile;
 
             Profile:
-                Console.Title = "OpenRec Profile Menu";
-                Console.WriteLine("(1) Change Username" + Environment.NewLine + "(2) Change Profile Image" + Environment.NewLine + "(3) Change Level" + Environment.NewLine + "(4) Profile Downloader" + Environment.NewLine + "(5) Go Back");
+                Console.Title = "NeoRec Profile Menu";
+                Console.WriteLine("(1) Change Username" + Environment.NewLine + "(2) Change Profile Image" + Environment.NewLine + "(3) Go Back");
                 string readline3 = Console.ReadLine();
                 if (readline3 == "1")
                 {
@@ -193,7 +168,7 @@ namespace start
                 else if (readline3 == "2")
                 {
                     Console.Clear();
-                    Console.WriteLine("1) Upload Media Link" + Environment.NewLine + "2) Drag Image onto this window" + Environment.NewLine + "3) Download Rec.Net Profile Image" + Environment.NewLine + "4) Go Back");
+                    Console.WriteLine("1) Upload Media Link" + Environment.NewLine + "2) Drag Image onto this window" + Environment.NewLine + "3) Go Back");
                     string readline4 = Console.ReadLine();
                     if (readline4 == "1")
                     {
@@ -236,43 +211,6 @@ namespace start
                     }
                     else if (readline4 == "3")
                     {
-                        Console.WriteLine("Type a RecRoom @ username and press enter: ");
-                        string username = Console.ReadLine();
-                        if (username.StartsWith("@"))
-                        {
-                            username = username.Remove(0, 1);
-                        }
-                        try
-                        {
-                            string data = "";
-                            try
-                            {
-                                data = new WebClient().DownloadString("https://accounts.rec.net/account/search?name=" + username);
-                            }
-                            catch
-                            {
-                                Console.Clear();
-                                Console.WriteLine("Failed to download profile...");
-                                goto Start;
-                            }
-                        
-                            List<ProfieStealer.Root> profile = JsonConvert.DeserializeObject<List<ProfieStealer.Root>>(data);
-                            byte[] profileimage = new WebClient().DownloadData("https://img.rec.net/" + profile[0].profileImage + "?cropSquare=true&width=192&height=192");
-                            File.WriteAllBytes("SaveData\\profileimage.png", profileimage);
-                            
-                        }
-                        catch
-                        {
-                            Console.Clear();
-                            Console.WriteLine("Unable to download image...");
-                            goto Profile;
-                        }
-                        Console.Clear();
-                        Console.WriteLine("Success!");
-                        goto Profile;
-                    }
-                    else if (readline4 == "4")
-                    {
                         Console.Clear();
                         goto Start;
                     }
@@ -289,45 +227,16 @@ namespace start
                 }
                 else if (readline3 == "4")
                 {
-                    Console.Title = "OpenRec Profile Downloader";
-                    Console.Clear();
-                    Console.WriteLine("Profile Downloader: This tool takes the username and profile image of any username you type in and imports it to OpenRec.");
-                    Console.WriteLine("Please type the @ username of the profile you would like:");
-                    string readusername = Console.ReadLine();
-                    if (readusername.StartsWith("@"))
-                    {
-                        readusername = readusername.Remove(0, 1);
-                    }
-                    string data2 = "";
-                    try
-                    {
-                        data2 = new WebClient().DownloadString("https://accounts.rec.net/account/search?name=" + readusername);
-                    }
-                    catch
-                    {
-                        Console.Clear();
-                        Console.WriteLine("Failed to download profile...");
-                        goto Start;
-                    }
-                    
-                    ProfieStealer.ProfileSteal(data2);
-                    
-                    Console.Clear();
-                    Console.WriteLine("Success!");
-                    goto Start;
-                }
-                else if (readline3 == "5")
-                {
                     Console.Clear();
                     goto Start;
                 }
             }
             if (readline == "4")
             {
-                Console.Title = "OpenRec Build Downloads";
+                Console.Title = "NeoRec Build Downloads";
                 Console.Clear();
                 Console.WriteLine("To download builds, either go to the builds channel or use the links below: (these links are also available from the #builds channel)" + Environment.NewLine);
-                Console.WriteLine(new WebClient().DownloadString("https://raw.githubusercontent.com/recroom2016/OpenRec/master/Update/builds.txt"));
+                Console.WriteLine(new WebClient().DownloadString("https://raw.githubusercontent.com/Bkerboy/NeoRec/master/Update/builds.txt"));
                 Console.WriteLine("Download a build and press any key to continue:");
                 Console.ReadKey();
                 Console.Clear();
@@ -335,12 +244,12 @@ namespace start
             }
             if (readline == "5")
             {
-                Console.Title = "OpenRec Version Select";
+                Console.Title = "NeoRec Version Select";
                 Console.WriteLine("Please select the version of RecRoom the server should host: (2016, 2017, 2018)");
                 string readline2 = Console.ReadLine();
                 if (readline2 == "2016")
                 {
-                    Console.Title = "OpenRec December 25th, 2016";
+                    Console.Title = "NeoRec December 25th, 2016";
                     version = "2016";
                     Console.Clear();
                     Console.WriteLine("Version Selected: December 25th, 2016.");
@@ -349,7 +258,7 @@ namespace start
                 }
                 else if (readline2 == "2017")
                 {
-                    Console.Title = "OpenRec October 19th 2017";
+                    Console.Title = "NeoRec October 19th 2017";
                     version = "2017";
                     Console.Clear();
                     Console.WriteLine("Version Selected: October 19th, 2017.");
@@ -362,7 +271,7 @@ namespace start
                     string readline3 = Console.ReadLine();
                     if ((readline3 == "M") || (readline3 == "m"))
                     {
-                        Console.Title = "OpenRec May 30th 2018";
+                        Console.Title = "NeoRec May 30th 2018";
                         version = "2018";
                         Console.Clear();
                         Console.WriteLine("Version Selected: May 30th, 2018.");
@@ -373,7 +282,7 @@ namespace start
                     }
                     else if ((readline3 == "S") || (readline3 == "s"))
                     {
-                        Console.Title = "OpenRec September 27th 2018";
+                        Console.Title = "NeoRec September 27th 2018";
                         version = "2018";
                         Console.Clear();
                         Console.WriteLine("Version Selected: September 27th, 2018.");
@@ -384,7 +293,7 @@ namespace start
                     }
                     else if ((readline3 == "J") || (readline3 == "j"))
                     {
-                        Console.Title = "OpenRec July 20th 2018";
+                        Console.Title = "NeoRec July 20th 2018";
                         version = "2018";
                         Console.Clear();
                         Console.WriteLine("Version Selected: July 20th, 2018");
@@ -400,7 +309,7 @@ namespace start
         }
         public static string msg = "//This is the server sending and recieving data from recroom." + Environment.NewLine + "//Ignore this if you don't know what this means." + Environment.NewLine + "//Please start up the build now.";
         public static string version = "";
-        public static string appversion = "0.6.9";
+        public static string appversion = "0.7.0";
         public static bool bannedflag = false;
     }
 

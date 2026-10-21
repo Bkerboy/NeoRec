@@ -79,7 +79,7 @@ namespace server
 					catch
 					{
 						Console.WriteLine("[ImageServer.cs] Image not found on img.rec.net.");
-						i = new WebClient().DownloadData("https://img.rec.net/DefaultRoomImage.jpg");
+						i = new WebClient().DownloadData("https://https://raw.githubusercontent.com/Bkerboy/NeoRec/refs/heads/master/Data/Images/DefaultRoomImage.jpg");
 					}
 				}
 				Console.WriteLine("Image Requested: " + rawUrl);
